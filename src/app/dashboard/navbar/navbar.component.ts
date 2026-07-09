@@ -13,20 +13,33 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit{
 
   isLogged = false;
+  isAdmin = false;
 
   constructor(private tokenService: TokenService,private router: Router) { }
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
       this.isLogged = true;
-    } else {
+      const roles = this.tokenService.getAuthorities();
+      this.isAdmin = roles.includes('ROLE_ADMIN');
+      } else {
       this.isLogged = false;
+      this.isAdmin = false;
     }
   }
-
+irRegistro(): void {
+  console.log('Entrando a registro...');
+  this.router.navigate(['/registro']).then(ok => {
+    console.log('Navegó:', ok);
+  });
+}
   onLogOut(): void {
+     console.log('SE EJECUTÓ LOGOUT');
     this.tokenService.logOut();
-    this.isLogged = false;
-    window.location.reload();
+    //this.isLogged = false;
+    //window.location.reload();
+    this.router.navigate(['/login'], {
+    replaceUrl: true
+  })
   }
 }

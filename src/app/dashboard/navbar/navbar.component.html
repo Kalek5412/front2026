@@ -11,8 +11,9 @@
             <img class="rounded-circle me-lg-2" src="assets/img/user.jpg" alt="" style="width: 40px; height: 40px;">
             <span class="d-none d-lg-inline-flex">John Doe</span>
         </a>
-        <div *ngIf="isLogged" (click)="onLogOut()" class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-            <a href="#" class="dropdown-item logout-item" >Cerrar session</a>
+        <div *ngIf="isLogged" class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+            <a *ngIf="isAdmin"   (click)="irRegistro()" routerLink="/registro" class="dropdown-item logout-item">rgistrar usuario</a>
+            <a href="#" (click)="onLogOut()" class="dropdown-item logout-item">Cerrar session</a>   
         </div>
     </div>
   </div>

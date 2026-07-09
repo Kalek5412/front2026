@@ -10,16 +10,26 @@
                             </a>
                             
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe">
-                            <label for="floatingText">Username</label>
-                        </div>
-    
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">REGISTRAR</button>
+                        <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" formControlName="nombre" placeholder="jhondoe">
+                                <label for="floatingText">Username</label>
+                            </div>
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" formControlName="nombreUsuario" placeholder="jhondoe">
+                                <label for="floatingText">Username</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" formControlName="email" placeholder="jhondoe">
+                                <label for="floatingText">email</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4" [disabled]="registerForm.invalid">REGISTRAR</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
